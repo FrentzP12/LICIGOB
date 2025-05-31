@@ -1,0 +1,167 @@
+/* Sección que envuelve el buscador */
+.search-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: linear-gradient(135deg, #f3f3f3, #e1e1e1);
+    padding: 120px 20px 40px; /* Para no chocar con navbar fijo */
+    box-sizing: border-box;
+  }
+  
+  .search-container {
+    width: 100%;
+    max-width: 1200px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 40px 30px;
+    margin: 0 auto;
+  }
+  
+  /* Título centrado */
+  .search-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Ajustar filas del formulario */
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .form-row label {
+    width: 150px;
+    font-weight: 500;
+    color: #333;
+    margin-right: 10px;
+  }
+  
+  .form-row input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Contenedor de botones */
+  .button-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center; /* Centra los botones */
+  }
+  
+  /* ================== */
+  /* Ajustes de la tabla*/
+  #results-container {
+    overflow-x: auto;
+    margin-top: 20px;
+  }
+  
+  #results {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    font-size: 0.9rem;
+  }
+  
+  #results th,
+  #results td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  #results th {
+    background-color: #111; /* Unificamos con el color de tus botones */
+    color: #fff;
+    position: sticky;
+    top: 0;
+    text-align: center;
+  }
+  
+  #results td {
+    text-align: center;
+  }
+  
+  /* Paginación */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  /* Reemplazamos el azul por #111 y #333 */
+  .pagination button {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .pagination button:hover {
+    background: #333;
+  }
+  
+  .pagination button.disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .pagination .active {
+    background: #333;
+    font-weight: bold;
+  }
+  
+  /* Responsividad */
+  @media screen and (max-width: 768px) {
+    .search-page {
+      /* Dejamos de usar flex y altura forzada */
+      display: block;
+      min-height: auto;
+      /* Ajusta el padding top según navbar */
+      padding: 80px 20px 20px; 
+    }  
+    .search-container {
+      padding: 30px 20px;
+    }
+    .form-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .form-row label {
+      margin-bottom: 5px;
+      width: auto;
+    }
+    .form-row input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .button-row {
+      flex-direction: column;
+    }
+  }
+  .copy-icon {
+    margin-left: 6px;       /* Separación del texto */
+    cursor: pointer;        /* Indica que es clicable */
+    font-size: 1rem;        /* Ajusta tamaño si usas un emoji */
+    color: #333;         /* Color de enlace o el que prefieras */
+    vertical-align: middle; /* Alineado con el texto */
+  }
+  
+  .copy-icon:hover {
+    color: #007bff;            /* Efecto hover */
+  }
+  

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Licigob{% endblock title %}</title>
+  {% load static %}
+  <!-- Tus CSS globales -->
+  <link rel="stylesheet" href="{% static 'assets/css/landing.css' %}">
+  {% block stylesheets %}{% endblock stylesheets %}
+</head>
+<body>
+
+  <!-- Navbar universal -->
+  <header class="navbar">
+    <div class="navbar-content">
+      <a href="{% url 'landing' %}" class="navbar-logo">
+        <img src="{% static 'assets/img/icons/media/licilogo.png' %}" alt="Licigob Logo">
+      </a>
+      
+      <!-- Ícono hamburguesa para móviles -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <nav>
+        <ul>
+          <li><a href="{% url 'landing' %}">Inicio</a></li>
+          <li><a href="#benefits">Beneficios</a></li>
+          <li><a href="#">Partners</a></li>
+          <li><a href="#pricing">Precios</a></li>
+          <li><a href="/login/">Iniciar Sesión</a></li>
+          <li><a href="/register/">Registro</a></li>
+          <li><a href="/argon/profile.html" class="btn btn-outline">Contáctanos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- Fin Navbar universal -->
+
+  <!-- Bloque de contenido que variará en cada página -->
+  {% block content %}{% endblock content %}
+
+  <!-- Scripts globales o el toggleMenu -->
+  {% block javascripts %}
+    <script>
+      function toggleMenu() {
+        document.querySelector('.navbar').classList.toggle('active');
+      }
+    </script>
+  {% endblock javascripts %}
+</body>
+</html>

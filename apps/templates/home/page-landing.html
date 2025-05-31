@@ -1,0 +1,146 @@
+{% extends 'layouts/base-landing.html' %}
+{% load static %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% static 'assets/css/landing.css' %}">
+{% endblock stylesheets %}
+
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<section id="landing" class="hero">
+    <div class="hero-content">
+        <h1>Optimiza tus Licitaciones<br>con Inteligencia Artificial</h1>
+        <div class="buttons">
+            <a href="{% url 'home' %}" class="btn btn-primary">Consultar Licitaciones</a>
+            <a href="#" class="btn btn-outline">Contáctanos</a>
+        </div>
+        <p>Encuentra fácilmente las licitaciones que mejor se adapten a tu negocio.</p>
+    </div>
+</section>
+
+<section id="features" class="features">
+    <div class="features-content">
+        <div class="features-text">
+            <h2>Encuentra las mejores licitaciones en minutos con IA</h2>
+            <p>Licigob optimiza tu búsqueda de proyectos estatales con inteligencia artificial. Ahorra tiempo y accede a oportunidades que realmente se ajustan a tu negocio.</p>
+            <br>
+            <a href="/register/" class="btn btn-outline">Regístrate gratis</a>
+        </div>
+        <div class="features-image">
+            <img src="{% static 'assets/img/icons/media/mobile-landing-display.png' %}" alt="Plataforma Licigob">
+        </div>
+    </div>
+</section>
+
+<section class="highlight">
+    <div class="highlight-container">
+      <!-- Rectángulo azul con círculo degradado -->
+      <div class="blue-rect">
+        <div class="circle-gradient"></div>
+      </div>
+      <!-- Cuadro de texto superpuesto -->
+      <div class="text-box">
+        <h2>Optimiza tus licitaciones con IA</h2>
+        <p>Nunca fue tan fácil venderle al estado.</p>
+        <a href="/register/" class="btn-hl">Registrarme</a>
+      </div>
+    </div>
+  </section>
+  
+  <section id="benefits" class="benefits">
+    <h2>¿Por qué elegir Licigob?</h2>
+    <p>Conoce los beneficios clave que ofrece.</p>
+    <div class="benefits-container">
+        <div class="benefit-card">
+            <img src="{% static 'assets/img/icons/media/brain.png' %}" alt="Búsqueda Inteligente con IA">
+            <h3>Búsqueda Inteligente con IA</h3>
+            <p>Filtra licitaciones según tu rubro en segundos.</p>
+            <a href="#" class="btn-benefit">Saber más</a>
+        </div>
+        <div class="benefit-card">
+            <img src="{% static 'assets/img/icons/media/clock.png' %}" alt="Menos Tiempo, Más Oportunidades">
+            <h3>Menos Tiempo, Más Oportunidades</h3>
+            <p>Sin procesos engorrosos ni términos técnicos.</p>
+            <a href="#" class="btn-benefit">Saber más</a>
+        </div>
+        <div class="benefit-card">
+            <img src="{% static 'assets/img/icons/media/bell.png' %}" alt="Notificaciones Personalizadas">
+            <h3>Notificaciones Personalizadas</h3>
+            <p>Recibe alertas de las licitaciones más relevantes.</p>
+            <a href="#" class="btn-benefit">Saber más</a>
+        </div>
+        <div class="benefit-card">
+            <img src="{% static 'assets/img/icons/media/stats.png' %}" alt="Análisis de Competencia">
+            <h3>Análisis de Competencia</h3>
+            <p>Descubre qué empresas ganaron contratos similares.</p>
+            <a href="#" class="btn-benefit">Saber más</a>
+        </div>
+    </div>
+    <section class="how-it-works">
+        <div class="how-it-works-inner">
+          <div class="how-it-works-text">
+            <h2>¿Cómo Funciona?</h2>
+            <p>Empieza a utilizar Licigob en estos 3 sencillos pasos.</p>
+            <a href="#" class="btn-register">Regístrate</a>
+          </div>
+          <div class="steps-container">
+            <div class="step-card">
+              <h3>Paso 1</h3>
+              <div class="step-box"></div>
+              <p>Regístrate gratis y define tu sector de negocio.</p>
+            </div>
+            <div class="step-card">
+              <h3>Paso 2</h3>
+              <div class="step-box"></div>
+              <p>La IA analiza y te recomienda las licitaciones más relevantes.</p>
+            </div>
+            <div class="step-card">
+              <h3>Paso 3</h3>
+              <div class="step-box"></div>
+              <p>Recibe alertas y postula de manera eficiente.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+  
+
+<section id="pricing" class="pricing">
+    <h2>Plan de Precios</h2>
+    <div class="pricing-container">
+        <div class="pricing-card">
+            <div class="icon">🌐</div>
+            <h3>Plan gratuito</h3>
+            <p>Prueba la plataforma con búsquedas ilimitadas por 5 días.</p>
+            <button>Suscribirme</button>
+        </div>
+        <div class="pricing-card">
+            <div class="icon">🌎</div>
+            <h3>Plan premium</h3>
+            <p>Accede a todas las funcionalidades y alertas avanzadas por tiempo ilimitado.</p>
+            <button>Suscribirme</button>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <h2>LICIGOB</h2>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+    </div>
+    <p>info@mysite.com</p>
+    <p>123-456-7890</p>
+    <p>500 Terry Francois Street, San Francisco, CA 94158</p>
+    <p>© 2035 by Business Name™</p>
+</footer>
+
+
+{% endblock content %}
+
+{% block javascripts %}
+  <script src="{% static 'assets/js/landing.js' %}"></script>
+{% endblock javascripts %}

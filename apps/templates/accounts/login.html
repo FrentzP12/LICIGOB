@@ -1,0 +1,65 @@
+{% extends 'layouts/base-landing.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<!-- Tu CSS principal de landing -->
+<link rel="stylesheet" href="{% static 'assets/css/landing.css' %}">
+<!-- Nuevo CSS para el login -->
+<link rel="stylesheet" href="{% static 'assets/css/auth.css' %}">
+{% endblock stylesheets %}
+
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Sección de Login -->
+<section class="login-page">
+  <div class="login-row">
+    
+    <!-- Columna Izquierda: Imagen conceptual -->
+    <div class="login-image">
+      <!-- Ajusta la ruta a tu imagen -->
+      <img src="{% static 'assets/img/icons/media/login-asset.png' %}" alt="Imagen conceptual">
+    </div>
+    
+    <!-- Columna Derecha: Formulario (más estrecho) -->
+    <div class="login-form-container">
+      <div class="login-form-header">
+        <h3>Iniciar Sesión</h3>
+        {% if msg %}
+          <span class="text-danger">{{ msg|safe }}</span>
+        {% else %}
+          <p>Ingrese sus datos</p>
+        {% endif %}
+      </div>
+
+      <form role="form" method="post" action="">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="username">Usuario</label>
+          {{ form.username }}
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          {{ form.password }}
+        </div>
+
+        <!-- Botones en la misma fila -->
+        <div class="btn-row">
+          <button type="submit" name="login" class="btn btn-primary">Iniciar Sesión</button>
+          <a href="{% url 'register' %}" class="btn btn-outline">Crear Cuenta</a>
+        </div>
+      </form>
+
+      <!-- Enlace de Soporte (opcional) -->
+      <div class="extra-links">
+        <a href="https://appseed.us" target="_blank" rel="noopener noreferrer">Soporte</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super }}
+  <!-- JS adicional si lo necesitas -->
+{% endblock javascripts %}

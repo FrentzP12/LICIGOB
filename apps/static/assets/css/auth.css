@@ -1,0 +1,169 @@
+  /***********************************
+    LOGIN PAGE
+  ************************************/
+  .login-page, 
+  .register-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start; /* Cambiado de center a flex-start */
+    justify-content: center;
+    background: linear-gradient(135deg, #f3f3f3, #e1e1e1);
+    box-sizing: border-box;
+    padding: 40px 20px; /* padding general */
+    padding-top: 120px; /* espacio para el navbar */
+  }
+
+  .login-row {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  /* Columna Izquierda: Imagen */
+  .login-image {
+    flex: 1; /* Ocupa el espacio sobrante */
+    background: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  /* Columna Derecha: Formulario más estrecho */
+  .login-form-container {
+    flex: none;           /* Deja de usar flex-grow */
+    max-width: 400px;     /* Ancho máximo para hacerlo más angosto */
+    width: 100%;          /* Asegura que en móviles use 100% */
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .login-form-header h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #181818;
+  }
+  
+  .login-form-header p,
+  .login-form-header .text-danger {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  /* Formulario */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Botones en la misma fila */
+  .btn-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .btn-row .btn {
+    flex: none;
+  }
+  
+  /* Enlaces extra (Soporte) */
+  .extra-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start; /* O center, si lo prefieres */
+  }
+  
+  .extra-links a {
+    font-size: 0.95rem;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .extra-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /***********************************
+    BREAKPOINTS
+  ************************************/
+  @media screen and (max-width: 992px) {
+    .login-image img {
+      max-width: 400px; 
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .login-page, 
+    .register-page {
+        padding-top: 100px; /* Ajuste menor para pantallas pequeñas */
+        margin-top: 0;      /* Si prefieres controlar todo desde padding */
+    }
+    .login-row {
+      flex-direction: column; 
+      align-items: center;
+    }
+    .login-image {
+      padding: 20px;
+    }
+    .login-image img {
+      max-width: 80%;
+    }
+    .login-form-container {
+      padding: 30px 20px;
+    }
+    .login-form-header h3 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .login-form-header h3 {
+      font-size: 1.5rem;
+    }
+    .login-form-header p,
+    .login-form-header .text-danger {
+      font-size: 0.9rem;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+      font-size: 0.9rem;
+    }
+    .btn.btn-primary {
+      font-size: 0.9rem;
+      padding: 10px 20px;
+    }
+    .extra-links a {
+      font-size: 0.85rem;
+    }
+  }
+  

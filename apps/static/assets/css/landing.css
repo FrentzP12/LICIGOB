@@ -1,0 +1,842 @@
+/* Importación de fuente */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+html,body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f3f3f3, #e1e1e1);
+    color: #181818;
+}
+/*=============VARIABLES DE FUENTE=======================*/
+:root {
+    /* Tamaños base en escritorio */
+    --fs-h1: 3rem;   /* Títulos principales */
+    --fs-h2: 2.4rem; /* Subtítulos */
+    --fs-h3: 1.8rem; /* Encabezados menores */
+    --fs-p: 1rem;    /* Texto de párrafo */
+  }
+  
+  /* Ajustes para Tablet (max-width: 768px) */
+  @media screen and (max-width: 768px) {
+    :root {
+      --fs-h1: 2.2rem;
+      --fs-h2: 1.8rem;
+      --fs-h3: 1.4rem;
+      --fs-p: 0.95rem;
+    }
+  }
+  
+  /* Ajustes para Móvil (max-width: 480px) */
+  @media screen and (max-width: 480px) {
+    :root {
+      --fs-h1: 1.8rem;
+      --fs-h2: 1.5rem;
+      --fs-h3: 1.2rem;
+      --fs-p: 0.9rem;
+    }
+  }
+  h1 {
+    font-size: var(--fs-h1);
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0.5em 0; /* Ajusta el espacio vertical */
+  }
+  
+  h2 {
+    font-size: var(--fs-h2);
+    font-weight: bold;
+    line-height: 1.3;
+    margin: 0.5em 0;
+  }
+  
+  h3 {
+    font-size: var(--fs-h3);
+    font-weight: bold;
+    line-height: 1.3;
+    margin: 0.5em 0;
+  }
+  
+  p {
+    font-size: var(--fs-p);
+    line-height: 1.5;
+    margin: 0.75em 0;
+    color: #555; /* Un color base para tus párrafos */
+  }
+  
+
+/* ======= Reset/Variables/Tipografía (sólo si las necesitas) ======= */
+/* ... tu reset y variables de fuente ... */
+
+/* ===================== Navbar Base (versión Desktop) ====================*/
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.navbar-logo img {
+    height: 40px;
+    max-width: 100%;
+}
+
+/* Menú de navegación (desktop) */
+.navbar nav {
+    display: block; /* Se muestra normalmente en escritorio */
+}
+
+/* Lista de enlaces (desktop) */
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.navbar nav ul li {
+    display: inline;
+}
+
+.navbar nav ul li a {
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+.navbar nav ul li a:hover {
+    color: #007bff;
+}
+
+/* Ícono hamburguesa oculto en desktop */
+.hamburger {
+    display: none;
+}
+
+/* ===================== Responsive: Tablet y Móvil ===================== */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 10px 3%;
+        z-index: 2000;
+    }
+
+    .navbar-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* ===== Side Nav desplegable ===== */
+    .navbar nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        transform: translateX(100%);  /* Fuera de la pantalla inicialmente */
+        transition: transform 0.3s ease-in-out;
+        display: flex;               /* Convertimos en flex container */
+        flex-direction: column;      /* Apilamos verticalmente */
+        justify-content: flex-start; /* Alineamos el contenido al inicio vertical */
+        align-items: flex-start;     /* Alinea el menú a la izquierda */
+        padding: 40px 20px;          /* Espacio interno */
+        z-index: 999;
+    }
+
+    /* Cuando la navbar tenga la clase .active, mostramos el menú */
+    .navbar.active nav {
+        transform: translateX(0);
+    }
+
+    /* Lista de enlaces en vertical, con estilo de "menú" */
+    .navbar nav ul {
+        list-style: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar nav ul li {
+        width: 100%;
+        border-bottom: 1px solid #eee; /* Línea separadora */
+        padding: 10px 0;              /* Espacio vertical */
+    }
+
+    .navbar nav ul li:last-child {
+        border-bottom: none; /* Sin línea en el último elemento */
+    }
+
+    /* Enlaces del menú en móvil */
+    .navbar nav ul li a {
+        display: block;
+        width: 100%;
+        padding: 5px 0;
+        color: #333;
+        font-weight: 500;
+        text-decoration: none;
+        text-align: left;       /* Alinea texto a la izquierda */
+        transition: background 0.3s, color 0.3s;
+    }
+
+    .navbar nav ul li a:hover {
+        background: #f2f2f2;  /* Fondo gris suave al hover */
+        color: #007bff;       /* Color de enlace hover */
+    }
+
+    /* Ícono hamburguesa visible en móviles */
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        z-index: 1001; 
+    }
+
+    .hamburger span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 4px;
+        background-color: #111;
+        transition: all 0.3s;
+    }
+    .navbar nav ul li a.btn.btn-outline {
+        display: block;        /* Para que el margin auto funcione */
+        margin: 0 auto;        /* Centra horizontalmente */
+        text-align: center;    /* Alinea el texto */
+        background: #111;      /* Fondo negro */
+        color: #fff;           /* Texto blanco */
+        border: none;          /* Quita el borde si no deseas outline */
+        /* Opcional: ajusta el padding si lo deseas */
+        padding: 10px 20px;
+        border-radius: 25px;   /* Mantén el borde redondeado */
+        font-weight: bold;
+      }
+}
+
+/* Para pantallas muy pequeñas (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .navbar nav ul li a {
+        font-size: 0.9rem;
+    }
+}
+
+/* ===================== Botones (opcional) ==================== */
+.btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background: #111;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #333;
+}
+
+.btn-outline {
+    border: 2px solid #111;
+    color: #111;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: #111;
+    color: white;
+}
+
+
+/* ======================Hero Section ====================*/
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 600px;  /* Un valor fijo, en lugar de vh */
+    padding-top: 60px;
+}
+
+.hero-content h1 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    color: #555;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+@media screen and (max-width: 768px) {
+    .hero {
+        /* Elimina la altura fija */
+        min-height: auto;
+        /* Aumenta el padding-top para que baje más */
+        padding-top: 120px;
+        /* Opcional: agrega un poco de espacio extra abajo si deseas */
+        padding-bottom: 20px;
+    }
+    .buttons {
+        flex-direction: column; 
+        gap: 10px;
+        align-items: center; /* Para que NO se estiren a todo el ancho */
+        justify-content: center; 
+      }
+}
+
+
+
+/*====================APARTADO FEATURES==================*/
+.features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 50px;
+    background: #fff;
+}
+
+.features-content {
+    display: flex;
+    max-width: 1200px;
+    align-items: center;
+    gap: 50px;
+}
+
+.features-text {
+    max-width: 500px;
+}
+
+.features-text h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.features-text p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.features-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+@media screen and (max-width: 768px) {
+    .features {
+        padding: 60px 20px;
+    }
+    .features-content {
+        flex-direction: column;  /* Imagen y texto en columna */
+        gap: 30px;
+    }
+    .features-text {
+        max-width: 100%;        /* Permite usar todo el ancho */
+        text-align: center;     /* Centra el texto en pantallas pequeñas */
+    }
+    .features-image img {
+        max-width: 80%;        /* Ajusta la imagen para que no desborde */
+        margin: 0 auto;
+        display: block;        /* Asegura que el margin auto tenga efecto */
+    }
+}
+
+
+/*================= Sección Highlight ================*/
+/* Contenedor principal */
+.highlight {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 0;  /* Espacio arriba y abajo */
+    background: #ffffff;
+}
+  /* Contenedor interno */
+  .highlight-container {
+    position: relative;
+    width: 80%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  /* Rectángulo azul */
+  .blue-rect {
+    width: 550px;
+    height: 400px;
+    background-color: #d0d3ff; /* Azul claro */
+    border-radius: 15px;
+    left:15%;
+    position: relative;
+  }
+  
+  /* Círculo degradado */
+  .circle-gradient {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(240,240,255,0) 80%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Cuadro de texto */
+  .text-box {
+    width: 300px;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    position: absolute;
+    right: 15%; /* Superposición */
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+  }
+  
+  /* Texto */
+  .text-box h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .text-box p {
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  /* Botón */
+  .btn-hl {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+  }
+  @media screen and (max-width: 768px) {
+    .highlight {
+        padding: 60px 20px;
+    }
+    .highlight-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .blue-rect {
+        width: 300px;
+        height: 250px;
+        margin-bottom: 20px; /* Espacio entre el rectángulo y la caja de texto */
+        left: auto;          /* Quita el left:15% */
+        margin-left: auto;    /* Centra horizontalmente */
+        margin-right: auto;
+    }
+    .text-box {
+        position: static;  /* Elimina posicionamiento absoluto en pantallas pequeñas */
+        transform: none;
+        right: auto;
+        top: auto;
+        margin: 0 auto;
+        width: 80%;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 480px) {
+    .blue-rect {
+        width: 250px;
+        height: 200px;
+    }
+}
+
+/*/==============Sección de Beneficios =================*/
+.benefits {
+    text-align: center;
+    padding: 80px 50px;
+    background: #fff;
+}
+
+.benefits h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.benefits p {
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.benefits-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.benefit-card {
+    background: #fff;
+    padding: 30px;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.benefit-card img {
+    width: 50px;
+    margin-bottom: 20px;
+}
+
+.benefit-card h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.benefit-card p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.btn-benefit {
+    display: inline-block;
+    padding: 10px 15px;
+    border: 2px solid #111;
+    color: #111;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-benefit:hover {
+    background: #111;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .benefits {
+        padding: 60px 20px;
+    }
+    .benefits-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .benefit-card {
+        width: 80%;
+        margin-bottom: 20px; /* Espacio entre tarjetas */
+    }
+}
+
+
+/*<====================SECCIÓN HOW IT WORKS==============>*/
+.how-it-works {
+    width: 100%;
+    background: #fff;
+    padding: 80px 50px;  /* Igual que tus otras secciones centradas */
+}
+
+.how-it-works-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;         /* Centra verticalmente texto y tarjetas */
+    justify-content: space-between; 
+    gap: 40px;
+    flex-wrap: wrap;            /* Ajuste responsivo en pantallas pequeñas */
+}
+
+.how-it-works-text {
+    flex: 1;                    /* Ocupa parte del espacio */
+    text-align: left;           /* Si quieres el texto alineado a la izquierda */
+    min-width: 250px;           /* Evita que se encoja demasiado */
+}
+
+.steps-container {
+    flex: 2;                    /* El contenedor de pasos puede ocupar más espacio */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.step-card {
+    text-align: center;
+    width: 220px;
+}
+
+.step-box {
+    width: 100%;
+    height: 250px;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #dbe2ff, #f4f5dc);
+    margin-bottom: 10px;
+}
+
+/* Botón */
+.btn-register {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #111;
+    color: #111;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+    background: #111;
+    color: #fff;
+}
+@media screen and (max-width: 768px) {
+    .how-it-works {
+        padding: 60px 20px;
+    }
+    .how-it-works-inner {
+        flex-direction: column;
+        align-items: center;
+    }
+    .how-it-works-text {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .steps-container {
+        justify-content: center;
+    }
+    .step-card {
+        width: 180px; /* Más estrecho en pantallas pequeñas */
+        margin-bottom: 20px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .step-card {
+        width: 150px;
+    }
+}
+
+
+/*============== Sección de Testimonios ================*/
+.testimonials {
+    text-align: center;
+    padding: 80px 50px;
+    background: #fff;
+}
+
+.testimonials h2 {
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.testimonials-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.testimonial-card {
+    background: #f7f7f7;
+    padding: 30px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.testimonial-card h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.testimonial-card p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.user-icon {
+    font-size: 2.5rem;
+    color: #444;
+}
+@media screen and (max-width: 768px) {
+    .testimonials {
+        padding: 60px 20px;
+    }
+    .testimonials-container {
+        flex-direction: column;    /* Apila las tarjetas verticalmente */
+        align-items: center;
+        gap: 20px;
+    }
+    .testimonial-card {
+        width: 80%;                /* Ocupa la mayor parte del ancho */
+        margin-bottom: 20px;       /* Espacio entre tarjetas */
+    }
+
+}
+
+
+/* =======Sección de Precios========= */
+.pricing {
+    text-align: center;
+    padding: 80px 50px;
+    background: #fff;
+}
+
+.pricing h2 {
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.pricing-card {
+    background: #fff;
+    padding: 40px;
+    width: 280px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: scale(1.05);
+}
+
+.icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.pricing-card h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.pricing-card p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: 2px solid black;
+    background: transparent;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: black;
+    color: white;
+}
+@media screen and (max-width: 768px) {
+    .pricing {
+        padding: 60px 20px;
+    }
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .pricing-card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Footer */
+.footer {
+    background: #fff;
+    text-align: center;
+    padding: 50px 20px;
+    position: relative;
+    font-family: Arial, sans-serif;
+}
+
+.footer h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    margin: 20px 0;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    font-size: 1.5rem;
+    color: black;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+    color: gray;
+}
+
+.footer p {
+    color: #555;
+    margin: 5px 0;
+}
+
+/* Forma decorativa en la parte inferior */
+.footer::after {
+    content: "";
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to right, #ddd, #fff);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* Media Query para tablets y pantallas medianas */
+@media screen and (max-width: 768px) {
+    .footer {
+        padding: 60px 20px;    /* igual que .pricing en tablet */
+    }
+}

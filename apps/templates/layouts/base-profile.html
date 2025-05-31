@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Perfil - Dashboard{% endblock title %}</title>
+  <!-- CSS global de tu perfil -->
+  <link rel="stylesheet" href="{% static 'assets/css/profile-dashboard.css' %}">
+  {% block stylesheets %}{% endblock stylesheets %}
+</head>
+<body class="profile-dashboard">
+
+  <!-- Navbar estilo dashboard -->
+  <header class="navbar user-navbar">
+    <div class="navbar-content">
+      
+      <!-- LOGO a la izquierda -->
+      <div class="navbar-logo">
+        <a href="{% url 'landing' %}">
+          <img src="{% static 'assets/img/icons/media/licilogo.png' %}" alt="Licigob Logo">
+        </a>
+      </div>
+
+      <!-- MENÚ PRINCIPAL (Desktop) en el centro -->
+      <nav class="navbar-main">
+        <ul>
+          <li><a href="{% url 'index1' %}">Buscador de Contrataciones</a></li>
+          <li><a href="#">Estadísticas</a></li>
+          <li><a href="#">Proyectos</a></li>
+          <li><a href="#">Soporte</a></li>
+        </ul>
+      </nav>
+
+      <!-- ÁREA DE USUARIO (Avatar) a la derecha -->
+      <div class="navbar-user">
+        <div class="user-dropdown">
+          <a href="#" class="user-avatar" onclick="toggleUserMenu(event)">
+            <img src="{% static 'assets/img/theme/team-4.jpg' %}" alt="Avatar usuario">
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Ver Perfil</a></li>
+            <li>
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Cerrar Sesión</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Ícono hamburguesa (versión móvil) -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+  </header>
+  <!-- Fin Navbar -->
+
+  <!-- Contenido de la página -->
+  <main>
+    {% block content %}{% endblock content %}
+  </main>
+
+  <!-- Scripts globales -->
+  {% block javascripts %}
+  <script>
+    // Abre/cierra menú en móvil
+    function toggleMenu() {
+      document.querySelector('.navbar-main ul').classList.toggle('show');
+    }
+    // Abre/cierra dropdown usuario
+    function toggleUserMenu(event) {
+      event.preventDefault();
+      const menu = document.querySelector('.user-dropdown .dropdown-menu');
+      menu.classList.toggle('show');
+    }
+    // Cerrar dropdown al hacer clic fuera
+    document.addEventListener('click', function(e) {
+      const userDropdown = document.querySelector('.user-dropdown');
+      if (userDropdown && !userDropdown.contains(e.target)) {
+        const menu = document.querySelector('.dropdown-menu');
+        if(menu) menu.classList.remove('show');
+      }
+    });
+  </script>
+  {% endblock javascripts %}
+</body>
+</html>

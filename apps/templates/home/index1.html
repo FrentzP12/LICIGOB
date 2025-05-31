@@ -1,0 +1,81 @@
+{% extends 'layouts/base-landing.html' %}
+{% load static %}
+{% block stylesheets %}
+<!-- Tu CSS principal (landing) -->
+<link rel="stylesheet" href="{% static 'assets/css/landing.css' %}">
+<!-- Opcional: Si deseas mantener parte de styles.css, cárgalo después -->
+<link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+{% endblock stylesheets %}
+
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Contenedor principal para el buscador -->
+<section class="search-page">
+  <div class="search-container">
+    <h2>Buscador de Contrataciones Públicas</h2>
+
+      <form id="search-form" onsubmit="search(event)">
+      <input type="submit" style="display: none;">
+      
+      <div class="form-row">
+        <label for="comprador">Entidad:</label>
+        <input type="text" id="comprador" name="comprador" placeholder="Nombre de la Entidad">
+      </div>
+      <div class="form-row">
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" placeholder="Descripción del item">
+      </div>
+      <div class="form-row">
+        <label for="nomenclatura">Nomenclatura:</label>
+        <input type="text" id="nomenclatura" name="nomenclatura" placeholder="Nomenclatura del item">
+      </div>
+      <div class="form-row">
+        <label for="departamento">Departamento:</label>
+        <input type="text" id="departamento" name="departamento" placeholder="Departamento">
+      </div>
+      <div class="form-row">
+        <label for="fecha_inicio">Fecha de inicio:</label>
+        <input type="date" id="fecha_inicio" name="fecha_inicio">
+      </div>
+      <div class="form-row">
+        <label for="fecha_fin">Fecha de fin:</label>
+        <input type="date" id="fecha_fin" name="fecha_fin">
+      </div>
+      
+      <div class="button-row">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+        <button type="button" class="btn btn-outline" onclick="clearFields()">Limpiar</button>
+        <a href="{% url 'landing' %}" class="btn btn-outline">Salir</a>
+        
+          
+      </div>
+    </form>
+
+    <div id="row-count">Total de filas: 0</div>
+    <div id="results-container">
+      <table id="results">
+        <thead>
+          <tr>
+            <th>Entidad</th>
+            <th>Nomenclatura</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Departamento</th>
+            <th onclick="sortTableByDate()">Fecha de Ingreso ⬍</th>
+            <th>Bases<br>Administrativas</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div id="pagination" class="pagination"></div>
+  </div>
+</section>
+{% endblock content %}
+
+{% block javascripts %}
+{{ block.super }}
+<script src="{% static 'assets/js/script.js' %}"></script>
+{% endblock javascripts %}

@@ -1,0 +1,77 @@
+{% extends 'layouts/base-landing.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<!-- Tu CSS principal de landing -->
+<link rel="stylesheet" href="{% static 'assets/css/landing.css' %}">
+<!-- El mismo CSS de autenticación que usa login -->
+<link rel="stylesheet" href="{% static 'assets/css/auth.css' %}">
+{% endblock stylesheets %}
+
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Sección de Registro -->
+<section class="login-page">
+  <div class="login-row">
+    
+    <!-- Columna Izquierda: Imagen conceptual -->
+    <div class="login-image">
+      <!-- Ajusta la ruta a tu imagen de registro -->
+      <img src="{% static 'assets/img/icons/media/login-asset.png' %}" alt="Imagen conceptual">
+    </div>
+    
+    <!-- Columna Derecha: Formulario (más estrecho) -->
+    <div class="login-form-container">
+      <div class="login-form-header">
+        <h3>Crear Cuenta</h3>
+        {% if msg %}
+          <span class="text-danger">{{ msg|safe }}</span>
+        {% else %}
+          <p>Complete el formulario para registrarse</p>
+        {% endif %}
+      </div>
+
+      <!-- Formulario de registro -->
+      <form role="form" method="post" action="">
+        {% csrf_token %}
+        
+        <!-- Ejemplo con campos típicos de Django Registration -->
+        <div class="form-group">
+          <label for="username">Usuario</label>
+          {{ form.username }}
+        </div>
+        <div class="form-group">
+          <label for="email">Correo</label>
+          {{ form.email }}
+        </div>
+        <div class="form-group">
+          <label for="password1">Contraseña</label>
+          {{ form.password1 }}
+        </div>
+        <div class="form-group">
+          <label for="password2">Confirmar Contraseña</label>
+          {{ form.password2 }}
+        </div>
+
+        <!-- Botones en la misma fila -->
+        <div class="btn-row">
+          <button type="submit" class="btn btn-primary">Registrarse</button>
+          <a href="{% url 'login' %}" class="btn btn-outline">Iniciar Sesión</a>
+        </div>
+      </form>
+
+      <!-- Enlace de Soporte (opcional) -->
+      <div class="extra-links">
+        <a href="https://appseed.us" target="_blank" rel="noopener noreferrer">Soporte</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super }}
+  <!-- JS adicional si lo necesitas -->
+{% endblock javascripts %}
+
