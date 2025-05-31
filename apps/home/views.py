@@ -14,11 +14,16 @@ def landing(request):
     html_template = loader.get_template('home/page-landing.html')
     return HttpResponse(html_template.render({}, request))
 
+#@login_required(login_url="/login/")
+#def index(request):
+ #   context = {'segment': 'index'}
+  #  html_template = loader.get_template('home/page-profile.html')
+   # return HttpResponse(html_template.render(context, request))
 @login_required(login_url="/login/")
 def index(request):
-    context = {'segment': 'index'}
-    html_template = loader.get_template('home/page-profile.html')
-    return HttpResponse(html_template.render(context, request))
+   context = {'segment': 'index'}
+   html_template = loader.get_template('home/index1.html')
+   return HttpResponse(html_template.render(context, request))
 
 @login_required(login_url="/login/")
 def index1(request):
