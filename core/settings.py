@@ -144,6 +144,7 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     'https://5c38-177-91-250-193.ngrok-free.app',
     'https://6225-177-91-250-193.ngrok-free.app',
+    'https://web-production-fb3b6.up.railway.app',
     # Puedes agregar otros orígenes de confianza aquí
 ]
 
